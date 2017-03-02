@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <meta charset="UTF-8">
+    <title>RAD</title>
+</head>
+<body>
+
+<style>
+    @-webkit-keyframes bg {
+        0%{background-position:0% 45%}
+        50%{background-position:100% 60%}
+        100%{background-position:0% 45%}
+    }
+
+    .bg {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to bottom right, #D38312, #A83279);
+        background-size: 300% 300%;
+        -webkit-animation: bg 6s ease infinite;
+    }
+
+    html {
+        height: 100%;
+    }
+
+    .container {
+        padding-top: 20px;
+        display: flex;
+
+    }
+
+    .card {
+        flex-grow: 1;
+        padding: 20px 30px;
+    }
+
+    span {
+        font-style: italic;
+        background-color: rgb(245, 181, 183)
+    }
+</style>
+<div class="bg"></div>
+
+<div class="container">
+    <div class="card">
+        <h3>Rapid Application Development</h3>
+        <hr>
+        <p>
+            Rapid application development is a software development process introduced by James Martin in 1981. The term
+            is now used to methodologies that use prototypes and iteration. Iteration is used to repeat the process in which
+            the product is improved until the customer is satisfied.
+        </p>
+        <p>
+            Upon each iteration, each prototype is evaluated by the customer and if it's necessary the prototype
+            is improved upon until the customer is satisfied and the final prototype becomes the final product.
+        </p>
+        <p>
+            An example of rapid application development is the spiral model. This model was documented in a paper by
+            Barry W. Boehm in 1988 and the following describes the complicated model:
+        </p>
+        <ol>
+            <li>
+                The Spiral model adds the RAD prototyping and risk analysis to the waterfall model
+                and splits the entire cycle into four quadrants.
+            </li>
+            <li>Quadrant 1: determine objectives, alternatives and constraints</li>
+            <li>Quadrant 2: evaluate alternatives, risks are identifies and resolved, if risks are too high the project
+                may be stopped</li>
+            <li>Quadrant 3: the prototype is developed</li>
+            <li>Quadrant 4: planning takes place for the next phase</li>
+        </ol>
+        <p>
+            These are two quotes from Barry's book <span>"A spiral model of software development and enhancement"</span>
+        </p>
+        <blockquote>
+            <i>
+                "Thus, the order of the steps was to do some coding first and to think about the requirements, design,
+                test, and maintenance later. This model has three primary difficulties: (a) After a number of fixes, the
+                code became so poorly structured that subsequent fixes were very expensive. This underscored the need for
+                a design phase prior to coding. (b) Frequently, even well designed software was such a poor match to users'
+                needs that it was either rejected outright or expensively redevelopment..."
+            </i> - Barry W. Boehm
+        </blockquote>
+        <blockquote>
+            <i>
+                "The spiral model presented in this article is one candidate for improving the software process model
+                situation. The major distinguishing feature of the spiral model is that it creates a risk-driven approach
+                to the software process rather than a primarily document-driven or code-driven process. It incorporates
+                many of the strengths of other models and resolves many of their difficulties."
+            </i> - Barry W. Boehm
+        </blockquote>
+        <hr>
+        <div style="margin: 5px 80px">
+            <table class="bordered centered">
+                <thead>
+                <tr>
+                    <th width="20%">Pros</th>
+                    <th width="50%">Cons</th>
+                    <th width="20%">When it might be used</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>Helpful when requirements are unclear</td>
+                    <td>Efficient code is not prioritised</td>
+                    <td>Short projects</td>
+                </tr>
+                <tr>
+                    <td>Should result in excellent usability</td>
+                    <td>Demanding on customer’s time for feedback</td>
+                    <td>RAD should be used only when a system can be modularized to be delivered in incremental manner.</td>
+                </tr>
+                <tr>
+                    <td>Changing requirements can be accommodated</td>
+                    <td></td>
+                    <td>When the customer is unsure of their requirements</td>
+                </tr>
+                <tr>
+                    <td>Encourages customer feedback</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

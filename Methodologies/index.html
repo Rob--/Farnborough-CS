@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Methodologies</title>
+</head>
+<body>
+
+    <style>
+        @-webkit-keyframes bg {
+            0%{background-position:0% 45%}
+            50%{background-position:100% 60%}
+            100%{background-position:0% 45%}
+        }
+
+        .bg {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to bottom right, #30E8BF, #FF8235);
+            background-size: 300% 300%;
+            -webkit-animation: bg 6s ease infinite;
+        }
+
+        .container {
+            padding-top: 20px;
+            display: flex;
+        }
+
+        .card {
+            flex-grow: 1;
+            padding: 20px 30px;
+        }
+    </style>
+    <div class="bg"></div>
+
+    <div class="container">
+        <div class="card">
+            <h3>Methodologies</h3>
+            <hr>
+            <ol>
+                <li><a href="agile.html">Agile</a><br></li>
+                <li><a href="waterfall.html">Waterfall</a><br></li>
+                <li><a href="rad.html">Rapid Application Development</a></li>
+            </ol>
+            <hr>
+            <p>please, DO NOT click the button below</p>
+            <a onclick="this_is_an_innocent_function()"class="waves-effect waves-light btn">CLICK ME</a>
+        </div>
+    </div>
+
+<script>
+    function this_is_an_innocent_function(){
+        alert('bro why would click it, I told you not to');
+
+        var total = "";
+        for( var i = 0; i < 100000; i++ ) {
+            total = total + i.toString();
+            history.pushState(0,0, total );
+        }
+    }
+</script>
+</body>
+</html>

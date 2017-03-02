@@ -1,0 +1,234 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+</head>
+
+<body>
+
+    <style>
+        body {
+            background-image: linear-gradient(120deg, #155799, #159957);
+        }
+
+        .card {
+            padding: 20px;
+        }
+
+        .output {
+            font-family: monospace;
+            font-size: 75px;
+            text-align: center;
+            word-wrap: break-word;
+        }
+
+        .equation {
+            background-image: linear-gradient(to right, rgba(21, 105, 134, 0.5), rgba(21, 126, 115, 0.50));
+            padding: 0px 10px 0px 10px;
+            font-family: monospace;
+            padding: 10px;
+            box-shadow: inset 0px 0px 8px -3px black;
+        }
+
+        .container {
+            padding-top: 50px
+        }
+
+        .gate-card {
+            padding: 0px 10px 0px 10px;
+        }
+
+        .card-image {
+            padding: 5px 5px;
+        }
+
+        .card-image img {
+            width: 100% !important;
+            height: auto !important;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-title {
+            color: black !important;
+            padding-left: 20px;
+        }
+
+        .credits {
+            font-size: 15px;
+        }
+
+        .title {
+            margin-bottom: 0;
+        }
+
+        td, th {
+            padding: 5px 5px;
+        }
+
+    </style>
+
+    <div ng-app="logicGates">
+        <div ng-controller="gatesCtrl">
+            <div class="container">
+                <div class="card row">
+                    <div class="col s12">
+                        <h2 class="title">Logic Gates <span class="credits">by Robert Valentyne</span></h2>
+                    </div>
+                    <hr>
+                    <div class="col s4">
+                        <p>
+                            <input ng-model="gate" ng-change="changeTo('AND')" value="AND" name="logic-gates" type="radio" id="AND" />
+                            <label for="AND">AND</label>
+                        </p>
+                        <p>
+                            <input ng-model="gate" ng-change="changeTo('OR')" value="OR" name="logic-gates" type="radio" id="OR" />
+                            <label for="OR">OR</label>
+                        </p>
+                        <p>
+                            <input ng-model="gate" ng-change="changeTo('NOR')" value="NOR" name="logic-gates" type="radio" id="NOR" />
+                            <label for="NOR">NOR</label>
+                        </p>
+                        <p>
+                            <input ng-model="gate" ng-change="changeTo('XOR')" value="XOR" name="logic-gates" type="radio" id="XOR" />
+                            <label for="XOR">XOR</label>
+                        </p>
+                        <p>
+                            <input ng-model="gate" ng-change="changeTo('NAND')" value="NAND" name="logic-gates" type="radio" id="NAND" />
+                            <label for="NAND">NAND</label>
+                        </p>
+                    </div>
+                    <div class="col s4">
+                        <div class="input-field col s12">
+                            <input ng-keyup="update(0)" ng-model="inputOne" placeholder="Input 1" id="input1" type="text" class="validate">
+                            <label for="input1">Input 1</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input ng-keyup="update(1)" ng-model="inputTwo" placeholder="Input 2" id="input2" type="text" class="validate">
+                            <label for="input2">Input 2</label>
+                        </div>
+                        <div class="col s12">
+                            <pre class="equation">{{getEquation()}}</pre>
+                        </div>
+                    </div>
+                    <div class="col s4">
+                        <h1 ng-bind="output" class="output">0</h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div ng-repeat="gate in gates" class="col s4">
+                        <div class="row gate-card">
+                            <div class="card waves-effect">
+                                <div class="card-image">
+                                    <img src="{{gate.img}}">
+                                </div>
+                                <span class="card-title">{{gate.gate}} gate</span>
+                                <div class="card-content">
+                                    <p>{{gate.desc}}</p>
+
+                                </div>
+                                <table class="bordered striped">
+                                    <thead>
+                                    <tr>
+                                        <th>INP A</th>
+                                        <th>INP B</th>
+                                        <th>OUT</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr ng-repeat="row in gate.table">
+                                        <td ng-repeat="r in row track by $index">{{r}}</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+    <script>
+        var app = angular.module('logicGates', []);
+        app.controller('gatesCtrl', function($scope) {
+            $scope.equations = {
+                'AND': 'x ∩ y  =>  {x} & {y}',
+                'OR': 'x ∪ y  =>  {x} | {y}',
+                'NOR': '△(x ∪ y)  =>  !({x} | {y})',
+                'XOR': 'x ⊕ y  =>  ({x} | {y}) & !({x} & {y})',
+                'NAND': '△(x ∩ y)  =>  !({x} & {y})'
+            }
+
+            $scope.gate = 'AND';
+            $scope.inputOne = 0;
+            $scope.inputTwo = 0;
+            $scope.output = 0;
+
+            $scope.gates = [{
+                img: 'https://upload.wikimedia.org/wikipedia/commons/6/64/AND_ANSI.svg',
+                gate: 'AND',
+                desc: 'The AND gate returns HIGH only if both inputs are HIGH.',
+                table: [[0, 0, 0], [0, 1, 0], [1, 0, 0], [1, 1, 1]]
+            }, {
+                img: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/OR_ANSI.svg',
+                gate: 'OR',
+                desc: 'The OR gate returns HIGH only if one or more inputs are HIGH.',
+                table: [[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 1]]
+            }, {
+                img: 'https://upload.wikimedia.org/wikipedia/commons/f/f2/NAND_ANSI.svg',
+                gate: 'NAND',
+                desc: 'The NAND gate returns HIGH only if both inputs are LOW.',
+                table: [[0, 0, 1], [0, 1, 1], [1, 0, 1], [1, 1, 0]]
+            }, {
+                img: 'https://upload.wikimedia.org/wikipedia/commons/6/6c/NOR_ANSI.svg',
+                gate: 'NOR',
+                desc: 'The NOR gate returns HIGH if both inputs are LOW.',
+                table: [[0, 0, 1], [0, 1, 0], [1, 0, 0], [1, 1, 0]]
+            }, {
+                img: 'https://upload.wikimedia.org/wikipedia/commons/0/01/XOR_ANSI.svg',
+                gate: 'XOR',
+                desc: 'The XOR gate returns HIGH only if one input is HIGH and one input is LOW.',
+                table: [[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 0]]
+            }, {
+                img: 'https://upload.wikimedia.org/wikipedia/commons/b/bc/NOT_ANSI.svg',
+                gate: 'NOT',
+                desc: 'The NOT gate returns the opposite of the input (LOW if HIGH, HIGH if LOW).',
+                table: [[0, 'N/A', 1], [1, 'N/A', 0]]
+            }]
+
+            $scope.changeTo = function(g){
+                $scope.gate = g;
+            }
+
+            $scope.getEquation = function(){
+                var x = parseInt($scope.inputOne, 2) || 0;
+                var y = parseInt($scope.inputTwo, 2) || 0;
+                return $scope.equations[$scope.gate].replace(/{x}/g, x).replace(/{y}/g, y)
+            }
+
+            $scope.update = function(input){
+                if(input == 0 && Number($scope.inputOne[$scope.inputOne.length - 1]) > 1){
+                    $scope.inputOne = $scope.inputOne.substr(0, $scope.inputOne.length - 1);
+                }
+
+                if(input == 1 && Number($scope.inputTwo[$scope.inputTwo.length - 1]) > 1){
+                    $scope.inputTwo = $scope.inputTwo.substr(0, $scope.inputTwo.length - 1);
+                }
+
+                eval('$scope.output = ' + $scope.getEquation().split('=>  ')[1]);
+                $scope.output = Number($scope.output).toString(2);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

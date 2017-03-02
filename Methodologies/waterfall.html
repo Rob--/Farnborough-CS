@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Waterfall</title>
+</head>
+<body>
+
+    <style>
+        @-webkit-keyframes bg {
+            0%{background-position:0% 45%}
+            50%{background-position:100% 60%}
+            100%{background-position:0% 45%}
+        }
+
+        .bg {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 124%;
+            background-image: linear-gradient(to bottom right, #34e89e, #0f3443);
+            background-size: 300% 300%;
+            -webkit-animation: bg 6s ease infinite;
+        }
+
+        .gif {
+            background-image: url(http://www.netanimations.net/walking-elephant.gif);
+            background-size: 90px;
+            -webkit-animation: slide 200s linear infinite;
+            opacity: 0.3;
+            height:124%;
+            width:100%;
+            position:absolute;
+            top:0
+        }
+
+        .container {
+            padding-top: 20px;
+            display: flex;
+
+        }
+
+        .card {
+            flex-grow: 1;
+            padding: 20px 30px;
+        }
+
+        blockquote {
+            border-left: 5px solid #52c17e;
+        }
+
+        @-webkit-keyframes slide
+        {
+            0%   {background-position: 0 0;}
+            100% {background-position: 0 10000px;}
+        }
+
+        span {
+            font-style: italic;
+            background-color: rgba(82, 193, 126, 0.22);
+        }
+
+    </style>
+    <div class="bg"></div>
+    <div class="gif"></div>
+
+    <div class="container">
+        <div class="card">
+            <h3>Waterfall Model</h3>
+            <hr>
+            <p>
+                The Waterfall modal originated from a paper written by Dr Winston W. Royce in 1970. The waterfall model is
+                sequential/linear meaning only when one stage or phase has finished can you proceed to the next.
+            </p>
+            <p>
+                It may be necessary during development to return a previous step. If this happens, all the steps from then
+                on need to completed as well. This means that if development does not finish when expected or something
+                doesn't go according to plan financial budgets and time required can nearly double.
+            </p>
+            <blockquote>
+                <i>
+                    "Although these problems are lumped under various headings to simplify discussion, they are actually
+                    all variations of one theme - poor management. Good project management of software procurements is
+                    impossible without some form of explicit (validated) and governing requirements."
+                </i> - Winston Royce
+            </blockquote>
+            <p>
+                The waterfall model consists of the following seven steps:
+            </p>
+            <ol>
+                <li>Software requirements</li>
+                <li>Analysis</li>
+                <li>Program design</li>
+                <li>Coding</li>
+                <li>Testing</li>
+                <li>Maintenance</li>
+            </ol>
+            <p>
+                Winston called the seven steps  <span>"implementation steps to develop a large computer program for delivery to a customer"</span> however Winston
+                saw a huge problem in his model which he described as:
+            </p>
+            <blockquote>
+                <i>
+                    "The testing phase which occurs at the end of the development cycle is the first event for which timing,
+                    storage, input/output transfers, etc., are experienced as distinguished from analyzed. These phenomena
+                    are not precisely analyzable. They are not the solutions to the standard partial differential equations
+                    of mathematical physics for instance. Yet if these phenomena fail to satisfy the various external constraints,
+                    then invariably a major redesign is required. A simple octal patch or redo of some isolated code will not fix
+                    these kinds of difficulties. The required design changes are likely to be so disruptive that the software
+                    requirements upon which the design is based and which provides the rationale for everything are violated..."
+                </i>
+            </blockquote>
+            <p>
+                According to Royce in the process model <span>"the design iterations are never confined to the successive step"</span>
+                , and for that model without iteration is <span>"risky and invites failure"</span>.
+            </p>
+            <hr>
+            <div style="margin: 5px 80px">
+                <table class="bordered centered">
+                    <thead>
+                    <tr>
+                        <th width="20%">Pros</th>
+                        <th width="50%">Cons</th>
+                        <th width="20%">When it might be used</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>Lots of documentation</td>
+                        <td>Lots of documentation!</td>
+                        <td>Short projects</td>
+                    </tr>
+                    <tr>
+                        <td>Easy to schedule and arrange tasks and judge progress</td>
+                        <td>
+                            If in testing the systems fails to meet requirements, either the requirements must be modified,
+                            or a substantial change in the design is required. "In effect the development process has
+                            returned to the origin and one can expect up to a lO0-percent overrun in schedule and/or
+                            costs" (p329, Royce, 1970).
+                        </td>
+                        <td>Straight forward projects where requirements are known and understood at the beginning and do not change</td>
+                    </tr>
+                    <tr>
+                        <td>Simple and easy to understand model</td>
+                        <td>Misunderstanding of requirements
+                            discovered too late</td>
+                        <td>When there is no benefit to the customer of having parts of the system available early.</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Users not involved until testing</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Cannot accommodate changing requirements</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>No working software is produced until late during the life cycle.</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Efficient code is not prioritized</td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

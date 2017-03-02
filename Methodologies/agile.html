@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Agile</title>
+</head>
+<body>
+
+    <style>
+        @-webkit-keyframes bg {
+            0%{background-position:0% 45%}
+            50%{background-position:100% 60%}
+            100%{background-position:0% 45%}
+        }
+
+        .bg {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to bottom right, #43cea2, #185a9d);
+            background-size: 300% 300%;
+            -webkit-animation: bg 6s ease infinite;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        .container {
+            padding-top: 20px;
+            display: flex;
+
+        }
+
+        .card {
+            flex-grow: 1;
+            padding: 20px 30px;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        span {
+            font-style: italic;
+            background-color: rgba(35, 119, 158, 0.22);
+        }
+    </style>
+    <div class="bg"></div>
+
+    <div class="container">
+        <div class="card">
+            <h3>Agile</h3>
+            <hr>
+            <p>
+                Agile methodology is based upon 12 principles:
+            </p>
+            <ol>
+                <li>Continuously deliver the software as features are implemented to satisfy the customer and make changes on demand.</li>
+                <li>Encourage changes to the requirements even in late development.</li>
+                <li>Working software is delivered frequently (weeks rather than months)</li>
+                <li>Close, daily cooperation between business people and developers</li>
+                <li>Projects are built around motivated individuals, who should be trusted</li>
+                <li>Face-to-face conversation is the best form of communication (co-location)</li>
+                <li>Working software is the principal measure of progress</li>
+                <li>Sustainable development ie sponsors, developers, and users should be able to maintain a constant pace indefinitely.</li>
+                <li>Continuous attention to technical excellence and good design</li>
+                <li>Simplicity—the art of maximizing the amount of work not done—is essential</li>
+                <li>The best architectures, requirements, and designs emerge from self-organizing teams.</li>
+                <li>Teams regularly reflects on how to become more effective, then tunes and adjusts its behavior accordingly.</li>
+            </ol>
+            <hr>
+            <p>
+                In response to the problems that the waterfall model presented, a group of software engineers discussed
+                lightweight development methodologies in 2001 and decided to use the term Agile and wrote the twelve
+                principles of agile software development as seen above.
+            </p>
+            <div class="flex">
+                <div>
+                    <p>
+                        Inspired by the agile principles, there was other software development methodologies such as <span>"Extreme Programming"</span>,
+                        which follows various rules including the following:
+                    </p>
+                    <ol>
+                        <li>Small releases</li>
+                        <li>Project is divided into iterations</li>
+                        <li>Stand up meeting starts each day</li>
+                        <li>Refactor whenever and wherever possible</li>
+                        <li>Customer is always available</li>
+                        <li>All production code is pair programmed</li>
+                        <li>Integrate often</li>
+                        <li>All code must have unit tests</li>
+                    </ol>
+                </div>
+
+                <div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Extreme_Programming.svg/367px-Extreme_Programming.svg.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
